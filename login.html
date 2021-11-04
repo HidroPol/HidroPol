@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Login landing page</title>
+</head>
+<body>
+    <section class="side">
+        <img src="./images/Frame 1.png" alt="">
+    </section>
+
+    <section class="main">
+        <div class="login-container">
+            <img src="./images/logo2.png" alt="">
+            <p class="title">Welcome back user</p>
+            <div class="separator"></div>
+            <p class="welcome-message">Your Plants Need You! Hurry Up!</p>
+
+            <form class="login-form" id="loginForm">
+                <div class="form-control">
+                    <input type="text" placeholder="Email" id="loginEmail">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="form-control">
+                    <input type="password" placeholder="Password" id="loginPassword">
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <button class="submit">Login</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- <script type="module">
+        import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+        const auth = getAuth();
+        const email = loginForm['loginEmail'].value
+        const password = loginForm['loginPassword'].value
+        signInWithEmailAndPassword(auth, email, password).then(cred => {
+            console.log(cred.user)
+        }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+        });
+    </script> -->
+    
+</body>
+</html>
