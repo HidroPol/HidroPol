@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
-    <title>Login landing page</title>
+    <title>Login page</title>
   </head>
   <body>
     <section class="side">
@@ -35,8 +35,6 @@
       </div>
     </section>
 
-    <button id="logout">logout</button>
-
     <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
@@ -60,7 +58,7 @@
       const auth = getAuth(app);
       const database = getDatabase(app);
     </script>
-    <script type="module" src="./auth.js"></script>
-    <script src="./index.js"></script>
+    <script type="module" src="../auth.js"></script>
+    <script src="../index.js"></script>
   </body>
 </html>
