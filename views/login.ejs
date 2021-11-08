@@ -20,7 +20,7 @@
         <div class="separator"></div>
         <p class="welcome-message">Your Plants Need You! Hurry Up!</p>
 
-        <form class="login-form" id="loginForm">
+        <form method="POST" class="login-form" id="loginForm">
           <div class="form-control">
             <input type="text" placeholder="Email" id="loginEmail" />
             <i class="fas fa-user"></i>
@@ -57,8 +57,15 @@
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
       const database = getDatabase(app);
+
+      onAuthStateChanged(auth, user => {
+          if(user != null) {
+              console.log('Loggin')
+          } else {
+              console.log('No user')
+          }
+      })
     </script>
     <script type="module" src="../auth.js"></script>
-    <script src="../index.js"></script>
   </body>
 </html>
