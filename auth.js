@@ -1,18 +1,37 @@
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
+const loggedInLinks = document.querySelectorAll(".login")
+const loggedOutLinks = document.querySelectorAll(".logout")
 
 const auth = getAuth();
+
+const setupUI = (user) => {
+  if (user) {
+    // toggle user UI elements
+    loggedInLinks.forEach(item => item.style.display = 'block');
+    loggedOutLinks.forEach(item => item.style.display = 'none');
+  } else {
+    // toggle user elements
+    loggedInLinks.forEach(item => item.style.display = 'none');
+    loggedOutLinks.forEach(item => item.style.display = 'block');
+  }
+};
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     console.log("berhasil login");
+    setupUI(user);
     // ...
   } else {
     // User is signed out
     // ...
     console.log("no user");
+    setupUI()
   }
 });
+
+
 
 const loginForm = document.getElementById("loginForm");
 loginForm.addEventListener("submit", (e) => {
