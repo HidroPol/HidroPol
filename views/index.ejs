@@ -4,50 +4,117 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #111;
-}
-
-.active {
-  background-color: #04AA6D;
-}
-    </style>
+    <title>Home</title>
   </head>
   <body>
     <h1>Halaman Awal</h1> 
-    <ul>
-      <li><a href="controlling" class="login">Controlling</a></li>
-      <li><a href="about" class="login">About</a></li>
-      <li style="float:right" class="logout"><a href="logout">Logout</a></li>
-      <li style="float:right" class="logout"><a href="login">Login</a></li>
-    </ul>
 
-    <!-- <script type="module">
-    auth.signOut().then(() => {
-        console.log('user signout')
-    })
-    </script> -->
+    <ul>
+      <li><a href="/">home</a></li>
+      <li><a href="about">about</a></li>
+      <li><a href="controlling" class="login">controlling</a></li>
+      <li><a class="logout">login</a></li>
+      <li><a class="login" id="logout">logout</a></li></li>
+    </ul>
+    <form id="loginForm" class="logout" action="" method="post">
+      <input type="text" id="email"><br>
+      <input type="password" id="password"><br>
+      <button id="login">login</button>
+    </form>
+
+    <div class="login">
+      <h3>Sensor Data</h3>
+      <ul>
+        <li>Nutrisi : <span id="nutrisi"></span></li>
+        <li>Suhu : <span id="suhu"></span></li>
+      </ul>
+    </div>
+
+      <script type="module">
+        // import firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
+        import { getDatabase, ref, onValue} from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBSxBmGcM6_1uNPqWd5oPutkyQsZvrYVO0",
+          authDomain: "hidropol-c0585.firebaseapp.com",
+          projectId: "hidropol-c0585",
+          storageBucket: "hidropol-c0585.appspot.com",
+          messagingSenderId: "436216931478",
+          appId: "1:436216931478:web:040c4a8ec221f244e70eb7",
+        };
+  
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+
+        // set status and UI element
+        const loggedInLinks = document.querySelectorAll(".login")
+        const loggedOutLinks = document.querySelectorAll(".logout")
+        const setupUI = (user) => {
+          if (user) {
+            // toggle user UI elements
+            loggedInLinks.forEach(item => item.style.display = 'block');
+            loggedOutLinks.forEach(item => item.style.display = 'none');
+          } else {
+            // toggle user elements
+            loggedInLinks.forEach(item => item.style.display = 'none');
+            loggedOutLinks.forEach(item => item.style.display = 'block');
+          }
+        };
+
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            console.log("login");
+            setupUI(user);
+          } else {
+            console.log("no user");
+            setupUI()
+          }
+        });
+
+        // Login
+        const loginForm = document.getElementById('loginForm')
+        const login = document.getElementById('login')
+        login.addEventListener("click", (e) => {
+          e.preventDefault()
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          signInWithEmailAndPassword(auth, email, password)
+            .then((cred) => {
+              console.log("berhasil login");
+              loginForm.reset();
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log(errorCode, errorMessage);
+              alert("email atau password salah")
+            });
+        })
+
+        // Logout
+        const logout = document.getElementById('logout')
+        logout.addEventListener('click', (e) => {
+          e.preventDefault()
+          signOut(auth).then(() => {
+            console.log('berhasil logout')
+          }).catch((error) => {
+            console.log('gagal logout')
+            error;
+          });
+        })
+
+        // read database
+        const nutrisi = document.getElementById('nutrisi')
+        const suhu = document.getElementById('suhu')
+        const DHT11SensorData = ref(database, 'DHT11SensorData');
+        onValue(DHT11SensorData, (snapshot) => {
+          nutrisi.innerHTML = snapshot.val().Nutrisi
+          suhu.innerHTML = snapshot.val().Suhu
+            // console.log(`Berhasil membaca nutrisi ${snapshot.val().Nutrisi} dan suhu ${snapshot.val().Suhu}`)
+        })
+      </script>
   </body>
 </html>
