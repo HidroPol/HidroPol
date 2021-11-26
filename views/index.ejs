@@ -1,120 +1,280 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-  </head>
-  <body>
-    <h1>Halaman Awal</h1> 
+<%- include('header') %> 
+<%- include('nav') %> 
 
-    <ul>
-      <li><a href="/">home</a></li>
-      <li><a href="about">about</a></li>
-      <li><a href="controlling" class="login">controlling</a></li>
-      <li><a class="logout">login</a></li>
-      <li><a class="login" id="logout">logout</a></li></li>
-    </ul>
-    <form id="loginForm" class="logout" action="" method="post">
-      <input type="text" id="email"><br>
-      <input type="password" id="password"><br>
-      <button id="login">login</button>
-    </form>
+    <div class="content mt-4">
+      <section class="carousel" aria-label="polite">
+        <ol class="carousel__viewport">
+          <li id="carousel__slide1" tabindex="0" class="carousel__slide">
+            <img src="images/slide1.png" alt="" width="100%" height="100%" />
+            <div class="carousel__snapper">
+              <a href="#carousel__slide4" class="carousel__prev">Go to last slide</a>
+              <a href="#carousel__slide2" class="carousel__next">Go to next slide</a>
+            </div>
+          </li>
+          <li id="carousel__slide2" tabindex="0" class="carousel__slide">
+            <img src="images/slide2.png" alt="" width="100%" height="100%" />
+            <div class="carousel__snapper"></div>
+            <a href="#carousel__slide1" class="carousel__prev">Go to previous slide</a>
+            <a href="#carousel__slide3" class="carousel__next">Go to next slide</a>
+          </li>
+          <li id="carousel__slide3" tabindex="0" class="carousel__slide">
+            <img src="images/slide3.png" alt="" width="100%" height="100%" />
+            <div class="carousel__snapper"></div>
+            <a href="#carousel__slide2" class="carousel__prev">Go to previous slide</a>
+            <a href="#carousel__slide4" class="carousel__next">Go to next slide</a>
+          </li>
+          <li id="carousel__slide4" tabindex="0" class="carousel__slide">
+            <img src="images/slide4.png" alt="" width="100%" height="100%" />
+            <div class="carousel__snapper"></div>
+            <a href="#carousel__slide3" class="carousel__prev">Go to previous slide</a>
+            <a href="#carousel__slide1" class="carousel__next">Go to first slide</a>
+          </li>
+        </ol>
 
-    <div class="login">
-      <h3>Sensor Data</h3>
-      <ul>
-        <li>Nutrisi : <span id="nutrisi"></span></li>
-        <li>Suhu : <span id="suhu"></span></li>
-      </ul>
+        <aside class="carousel__navigation">
+          <ol class="carousel__navigation-list">
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide1" class="carousel__navigation-button">Go to slide 1</a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide2" class="carousel__navigation-button">Go to slide 2</a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide3" class="carousel__navigation-button">Go to slide 3</a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide4" class="carousel__navigation-button">Go to slide 4</a>
+            </li>
+          </ol>
+        </aside>
+      </section>
+      <div class="pl-12">
+        <div class="container">
+          <div class="row mt-5 justify-content-between">
+            <div class="col-4">
+              <h1 class="h1 text-start">Monitoring Panel</h1>
+            </div>
+            <div class="col-4">
+              <div class="text-end"><img class="img-fluid" src="https://img.icons8.com/plasticine/100/000000/sun.png" width="60" height="0" />Sunny Day 27&deg;C</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="container">
+        <div class="row justify-content-md-center">
+          <br />
+
+          <div class="col-lg-2 mb-3 pr-10ssss">
+            <div class="cardi text-center border-light">
+              <br />
+              <img src="images/temp.png" alt="" width="70" height="100" />
+              <div class="card-body">
+                <h1 class="h2">Suhu Air</h1>
+                <h1 class="h3"><span id="suhu"></span></h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 mb-3">
+            <div class="cardi text-center border-light">
+              <br />
+              <img src="images/uap.png" alt="" width="70" height="100" />
+              <div class="card-body">
+                <h5 class="h2">Nutrisi</h5>
+                <h1 class="h3"><span id="nutrisi"></span></h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 mb-3">
+            <div class="cardi text-center border-light">
+              <br />
+              <img src="images/water.png" alt="" width="70" height="100" />
+              <div class="card-body">
+                <h5 class="h2">Ketinggian Air</h5>
+                <h1 class="h3"><span id="ketinggian"></span></h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 mb-3">
+            <div class="cardi text-center border-light">
+              <br />
+              <img src="images/air.png" alt="" width="70" height="100" />
+              <div class="card-body">
+                <h5 class="h2">Ph Air</h5>
+                <h1 class="h3"><span id="ph"></span></h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 mb-3">
+            <div class="cardi text-center border-light">
+              <br />
+              <img src="images/uv.png" alt="" width="70" height="100" />
+              <div class="card-body">
+                <h5 class="h2">Sinar Uv</h5>
+                <h1 class="h3"><span id="sinaruv"></span></h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 mb-3 col-sm-12 col-md-12">
+            <div class="cardi text-center border-light">
+              <div class="card-body">
+                <h5 class="h2">Calender Panen</h5>
+                <br />
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <div class="card border-light" style="background-color: rgb(24, 58, 100)">
+                        <div class="card-body">
+                          <div class="h4">Senin</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="card border-light" style="background-color: rgb(24, 58, 100)">
+                        <div class="card-body">
+                          <div class="h4">Selasa</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card border-light" style="background-color: rgb(24, 58, 100)">
+                        <div class="card-body">
+                          <div class="h4">Rabu</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card border-light" style="background-color: rgb(24, 58, 100)">
+                        <div class="card-body">
+                          <div class="h4">Kamis</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card border-light" style="background-color: rgb(24, 58, 100)">
+                        <div class="card-body">
+                          <div class="h4">Jumat</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card border-light" style="background-color: rgb(24, 58, 100)">
+                        <div class="card-body">
+                          <div class="h4">Sabtu</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="cardi text-center border-light" style="background-image: url('images/ilus/gambargb.png'); background-position: center; background-size: cover">
+              <div class="card-body">
+                <h1 class="h2">Learn Hydrophonic easily with this manual book</h1>
+                <button type="button" class="btn btn-primary btn-sm btn-block" style="border-radius: 16px; background-color: rgb(24, 58, 100)">Small button</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="container">
+        <br />
+      </section>
     </div>
 
-      <script type="module">
-        // import firebase
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
-        import { getDatabase, ref, onValue} from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-        const firebaseConfig = {
-          apiKey: "AIzaSyBSxBmGcM6_1uNPqWd5oPutkyQsZvrYVO0",
-          authDomain: "hidropol-c0585.firebaseapp.com",
-          projectId: "hidropol-c0585",
-          storageBucket: "hidropol-c0585.appspot.com",
-          messagingSenderId: "436216931478",
-          appId: "1:436216931478:web:040c4a8ec221f244e70eb7",
-        };
-  
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const database = getDatabase(app);
+    <script type="module">
+      // import firebase
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+      import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
+      import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
 
-        // set status and UI element
-        const loggedInLinks = document.querySelectorAll(".login")
-        const loggedOutLinks = document.querySelectorAll(".logout")
-        const setupUI = (user) => {
-          if (user) {
-            // toggle user UI elements
-            loggedInLinks.forEach(item => item.style.display = 'block');
-            loggedOutLinks.forEach(item => item.style.display = 'none');
-          } else {
-            // toggle user elements
-            loggedInLinks.forEach(item => item.style.display = 'none');
-            loggedOutLinks.forEach(item => item.style.display = 'block');
-          }
-        };
+      const firebaseConfig = {
+        apiKey: "AIzaSyBSxBmGcM6_1uNPqWd5oPutkyQsZvrYVO0",
+        authDomain: "hidropol-c0585.firebaseapp.com",
+        projectId: "hidropol-c0585",
+        storageBucket: "hidropol-c0585.appspot.com",
+        messagingSenderId: "436216931478",
+        appId: "1:436216931478:web:040c4a8ec221f244e70eb7",
+      };
 
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-            console.log("login");
-            setupUI(user);
-          } else {
-            console.log("no user");
-            setupUI()
-          }
-        });
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const database = getDatabase(app);
 
-        // Login
-        const loginForm = document.getElementById('loginForm')
-        const login = document.getElementById('login')
-        login.addEventListener("click", (e) => {
-          e.preventDefault()
-          const email = document.getElementById('email').value;
-          const password = document.getElementById('password').value;
-          signInWithEmailAndPassword(auth, email, password)
-            .then((cred) => {
-              console.log("berhasil login");
-              loginForm.reset();
-            })
-            .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              console.log(errorCode, errorMessage);
-              alert("email atau password salah")
-            });
-        })
+      // Login
+      const loginForm = document.querySelector(".login-form");
+      const login = document.getElementById("login");
+      login.addEventListener("click", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        signInWithEmailAndPassword(auth, email, password)
+          .then((cred) => {
+            console.log("berhasil login");
+            loginForm.reset();
+            window.location = "/";
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+            alert("email atau password salah");
+          });
+      });
 
-        // Logout
-        const logout = document.getElementById('logout')
-        logout.addEventListener('click', (e) => {
-          e.preventDefault()
-          signOut(auth).then(() => {
-            console.log('berhasil logout')
-          }).catch((error) => {
-            console.log('gagal logout')
+      // set status and ui
+      const signin = document.querySelectorAll(".signin")
+      const signout = document.querySelectorAll(".signout")
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log("login");
+          signin.forEach((item) => (item.style.display = "block") )
+          signout.forEach((item) => (item.style.display = "none") )
+        } else {
+          console.log("no user");
+          signin.forEach((item) => (item.style.display = "none") )
+          signout.forEach((item) => (item.style.display = "block") )
+        }
+      });
+
+      // logout
+      const logout = document.getElementById("logout");
+      logout.addEventListener("click", (e) => {
+        e.preventDefault();
+        signOut(auth)
+          .then(() => {
+            console.log("berhasil logout");
+          })
+          .catch((error) => {
+            console.log("gagal logout");
             error;
           });
-        })
+      });
 
-        // read database
-        const nutrisi = document.getElementById('nutrisi')
-        const suhu = document.getElementById('suhu')
-        const DHT11SensorData = ref(database, 'DHT11SensorData');
-        onValue(DHT11SensorData, (snapshot) => {
-          nutrisi.innerHTML = snapshot.val().Nutrisi
-          suhu.innerHTML = snapshot.val().Suhu
-            // console.log(`Berhasil membaca nutrisi ${snapshot.val().Nutrisi} dan suhu ${snapshot.val().Suhu}`)
-        })
-      </script>
+      // read database
+      const suhu = document.getElementById("suhu");
+      const nutrisi = document.getElementById("nutrisi");
+      const ketinggian = document.getElementById("ketinggian");
+      const ph = document.getElementById("ph");
+      const sinaruv = document.getElementById("sinaruv")
+      const DHT11SensorData = ref(database, "DHT11SensorData");
+      onValue(DHT11SensorData, (snapshot) => {
+        suhu.innerHTML = snapshot.val().Suhu;
+        nutrisi.innerHTML = snapshot.val().Nutrisi;
+        ketinggian.innerHTML = snapshot.val().Ketinggian;
+        ph.innerHTML = snapshot.val().Ph;
+        sinaruv.innerHTML = snapshot.val().SinarUV;
+        // console.log(`Berhasil membaca nutrisi ${snapshot.val().Nutrisi} dan suhu ${snapshot.val().Suhu}`)
+      });
+    </script>
+
   </body>
 </html>

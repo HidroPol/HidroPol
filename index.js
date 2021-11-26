@@ -9,29 +9,27 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { title: "Hidropol" });
 });
-
-// app.get("/login", (req, res) => {
-//   res.render("login");
-// });
 
 app.post("/login", (req, res) => {
   res.send("login");
 });
 
-app.get("/controlling", (req, res) => {
-  res.render("controlling");
+app.get("/controling", (req, res) => {
+  res.render("controling", { title: "Hidropol | Controlling" });
+});
+
+app.post("/controling", (req, res) => {
+  res.send("controling", { title: "Hidropol | Controlling" });
 });
 
 app.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", { title: "Hidropol | About" });
 });
 
 app.use((req, res, next) => {
-  res.status(404).json({
-      message: 'Ohh you are lost, read the API documentation to find your way back home :)'
-  })
-})
+  res.render("404");
+});
 
 app.listen(8080, () => console.log("server listening on port 8080"));
