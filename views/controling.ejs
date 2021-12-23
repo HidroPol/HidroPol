@@ -34,7 +34,6 @@
                         <input type="text" class="form-control">
                     </div>
                     <br><br><br />
-                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="dark">
                     <br><br><br><br>
                 </form>
             </div>
@@ -70,7 +69,6 @@
                                         </div>
                                     </div>
                                       <br /><input type="text" class="form-control">
-                                      <input type="checkbox" checked data-toggle="toggle" data-onstyle="dark">
                                     </div>
                                     <div class="col">
                                       <div class="cardalem" >
@@ -79,7 +77,6 @@
                                         </div>
                                     </div>
                                         <br /><input type="text" class="form-control">
-                                        <input type="checkbox" checked data-toggle="toggle" data-onstyle="dark">
                                         <br /><br />
                                     </div>
                                 </div>
@@ -115,8 +112,8 @@
                         <div class="form-group">
                             <label class="h5">Set Your Nutrition</label>
                             <input type="text" class="form-control">
+                            <br>
                         </div>
-                        <input type="checkbox" checked data-toggle="toggle" data-onstyle="dark">
                     </form>
                 </div>
             </div>
@@ -169,6 +166,7 @@
       const firebaseConfig = {
         apiKey: "AIzaSyBSxBmGcM6_1uNPqWd5oPutkyQsZvrYVO0",
         authDomain: "hidropol-c0585.firebaseapp.com",
+        databaseURL: "https://hidropol-c0585-default-rtdb.firebaseio.com",
         projectId: "hidropol-c0585",
         storageBucket: "hidropol-c0585.appspot.com",
         messagingSenderId: "436216931478",
@@ -179,13 +177,21 @@
       const auth = getAuth(app);
       const database = getDatabase(app);
 
-    //   set status and ui
+      // set status and ui
+      const signin = document.querySelectorAll(".signin")
+      const signout = document.querySelectorAll(".signout")
       onAuthStateChanged(auth, (user) => {
         if (user) {
           console.log("login");
+          signin.forEach((item) => (item.style.display = "block",
+          item.classList.toggle("d-inline-block")) )
+          signout.forEach((item) => (item.style.display = "none") )
         } else {
+          window.location = "/";
           console.log("no user");
-          alert('Harap login terlebih dahulu')
+          signin.forEach((item) => (item.style.display = "none") )
+          signout.forEach((item) => (item.style.display = "block",
+          item.classList.toggle("d-inline-block")) )
           window.location = "/";
         }
       });

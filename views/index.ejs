@@ -70,8 +70,7 @@
               <img src="images/temp.png" alt="" width="70" height="100" />
               <div class="card-body">
                 <h1 class="h2">Temperature</h1>
-                <h1 class="h3">0</h1>
-                <h1 class="h3"><span id="temperature"></span></h1>
+                <h1 class="h3"><span id="suhu"></span></h1>
               </div>
             </div>
           </div>
@@ -82,8 +81,7 @@
               <img src="images/uap.png" alt="" width="70" height="100" />
               <div class="card-body">
                 <h5 class="h2">Nutrition</h5>
-                <h1 class="h3">0</h1>
-                <h1 class="h3"><span id="nutrition"></span></h1>
+                <h1 class="h3"><span id="nutrisi"></span></h1>
               </div>
             </div>
           </div>
@@ -94,8 +92,7 @@
               <img src="images/water.png" alt="" width="70" height="100" />
               <div class="card-body">
                 <h5 class="h2">Height</h5>
-                <h1 class="h3">0</h1>
-                <h1 class="h3"><span id="height"></span></h1>
+                <h1 class="h3"><span id="ketinggian"></span></h1>
               </div>
             </div>
           </div>
@@ -106,8 +103,7 @@
               <img src="images/air.png" alt="" width="70" height="100" />
               <div class="card-body">
                 <h5 class="h2">Water Ph</h5>
-                <h1 class="h3">0</h1>
-                <h1 class="h3"><span id="waterph"></span></h1>
+                <h1 class="h3"><span id="ph"></span></h1>
               </div>
             </div>
           </div>
@@ -118,8 +114,7 @@
               <img src="images/uv.png" alt="" width="70" height="100" />
               <div class="card-body">
                 <h5 class="h2">Uv Light</h5>
-                <h1 class="h3">0</h1>
-                <h1 class="h3"><span id="uvLight"></span></h1>
+                <h1 class="h3"><span id="sinaruv"></span></h1>
               </div>
             </div>
           </div>
@@ -204,10 +199,11 @@
       const firebaseConfig = {
         apiKey: "AIzaSyBSxBmGcM6_1uNPqWd5oPutkyQsZvrYVO0",
         authDomain: "hidropol-c0585.firebaseapp.com",
+        databaseURL: "https://hidropol-c0585-default-rtdb.firebaseio.com",
         projectId: "hidropol-c0585",
         storageBucket: "hidropol-c0585.appspot.com",
         messagingSenderId: "436216931478",
-        appId: "1:436216931478:web:040c4a8ec221f244e70eb7",
+        appId: "1:436216931478:web:040c4a8ec221f244e70eb7"
       };
 
       const app = initializeApp(firebaseConfig);
@@ -241,12 +237,14 @@
       onAuthStateChanged(auth, (user) => {
         if (user) {
           console.log("login");
-          signin.forEach((item) => (item.style.display = "block") )
+          signin.forEach((item) => (item.style.display = "block",
+          item.classList.toggle("d-inline-block")) )
           signout.forEach((item) => (item.style.display = "none") )
         } else {
           console.log("no user");
           signin.forEach((item) => (item.style.display = "none") )
-          signout.forEach((item) => (item.style.display = "block") )
+          signout.forEach((item) => (item.style.display = "block",
+          item.classList.toggle("d-inline-block")) )
         }
       });
 
@@ -277,7 +275,7 @@
         ketinggian.innerHTML = snapshot.val().Ketinggian;
         ph.innerHTML = snapshot.val().Ph;
         sinaruv.innerHTML = snapshot.val().SinarUV;
-        // console.log(`Berhasil membaca nutrisi ${snapshot.val().Nutrisi} dan suhu ${snapshot.val().Suhu}`)
+        // console.log(`Berhasil membaca nutrisi ${snapshot.val().Nutrisi} dan suhu ${snapshot.val().Suhu},,${snapshot.val().Ketinggian},,${snapshot.val().Ph},,${snapshot.val().Ph}`)
       });
     </script>
 

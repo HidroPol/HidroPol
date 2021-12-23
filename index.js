@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const PORT = 8080
 
 const app = express();
 
@@ -32,4 +33,4 @@ app.use((req, res, next) => {
   res.render("404");
 });
 
-app.listen(8080, () => console.log("server listening on port 8080"));
+app.listen(PORT, () => console.log(`server listening on port ${PORT}`));

@@ -89,6 +89,7 @@
     const firebaseConfig = {
       apiKey: "AIzaSyBSxBmGcM6_1uNPqWd5oPutkyQsZvrYVO0",
       authDomain: "hidropol-c0585.firebaseapp.com",
+      databaseURL: "https://hidropol-c0585-default-rtdb.firebaseio.com",
       projectId: "hidropol-c0585",
       storageBucket: "hidropol-c0585.appspot.com",
       messagingSenderId: "436216931478",
@@ -99,16 +100,24 @@
     const auth = getAuth(app);
     const database = getDatabase(app);
 
-  //   set status and ui
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log("login");
-      } else {
-        console.log("no user");
-        alert('Harap login terlebih dahulu')
-        window.location = "/";
-      }
-    });
+    // set status and ui
+    const signin = document.querySelectorAll(".signin")
+      const signout = document.querySelectorAll(".signout")
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log("login");
+          signin.forEach((item) => (item.style.display = "block",
+          item.classList.toggle("d-inline-block")) )
+          signout.forEach((item) => (item.style.display = "none") )
+        } else {
+          window.location = "/";
+          console.log("no user");
+          signin.forEach((item) => (item.style.display = "none") )
+          signout.forEach((item) => (item.style.display = "block",
+          item.classList.toggle("d-inline-block")) )
+          window.location = "/";
+        }
+      });
 
     // Logout
     const logout = document.getElementById("logout");
