@@ -1,5 +1,5 @@
-<%- include('header') %> 
-<%- include('nav') %> 
+<%- include('./partials/header') %> 
+<%- include('./partials/nav') %> 
 
     <div class="content mt-4">
         
@@ -27,7 +27,7 @@
                 <form>
                     <div class="form-group">
                         <label class="h5">Your Current Water Volume</label>
-                        <input type="text" class="form-control text-center" value="11" readonly>
+                        <h1 class="h3"><span id="suhu"></span></h1>
                     </div>
                     <div class="form-group">
                         <label class="h5">Set Your Water Volume</label>
@@ -57,7 +57,7 @@
                         <form>
                             <div class="form-group">
                                 <label class="h5">Your Current Water Ph</label>
-                                <input type="text" class="form-control text-center" value="11" readonly>
+                                <h1 class="h3"><span id="ph"></span></h1>
                             </div>
                             <div class="form-group">
                                 <label class="h5">Set Your Water Ph</label><br /><br />
@@ -107,7 +107,7 @@
                     <form>
                         <div class="form-group">
                             <label class="h5">Your Current Nutrition</label>
-                            <input type="text" class="form-control text-center" value="11" readonly>
+                            <h1 class="h3"><span id="nutrisi"></span></h1>
                         </div>
                         <div class="form-group">
                             <label class="h5">Set Your Nutrition</label>
@@ -209,6 +209,20 @@
             console.log("gagal logout");
             error;
           });
+      });
+
+      // read database
+      const suhu = document.getElementById("suhu");
+      const nutrisi = document.getElementById("nutrisi");
+      const ph = document.getElementById("ph");
+      const sinaruv = document.getElementById("sinaruv")
+      const DHT11SensorData = ref(database, "DHT11SensorData");
+      onValue(DHT11SensorData, (snapshot) => {
+        suhu.innerHTML = snapshot.val().Suhu;
+        nutrisi.innerHTML = snapshot.val().Nutrisi;
+        ph.innerHTML = snapshot.val().Ph;
+        sinaruv.innerHTML = snapshot.val().SinarUV;
+        // console.log(`Berhasil membaca nutrisi ${snapshot.val().Nutrisi} dan suhu ${snapshot.val().Suhu},,${snapshot.val().Ketinggian},,${snapshot.val().Ph},,${snapshot.val().Ph}`)
       });
     </script>
 
