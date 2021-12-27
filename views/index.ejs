@@ -195,7 +195,6 @@
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
       import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
       import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
-
       const firebaseConfig = {
         apiKey: "AIzaSyBSxBmGcM6_1uNPqWd5oPutkyQsZvrYVO0",
         authDomain: "hidropol-c0585.firebaseapp.com",
@@ -255,6 +254,7 @@
         signOut(auth)
           .then(() => {
             console.log("berhasil logout");
+            window.location = "/";
           })
           .catch((error) => {
             console.log("gagal logout");
